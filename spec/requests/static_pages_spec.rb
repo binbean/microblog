@@ -1,24 +1,21 @@
 require 'spec_helper'
 
 describe "Static Pages" do
+
+  subject { page }
+
   describe "Home page" do
-    it "should have the content 'microblog'"do
-      visit '/static_pages/home'
-      expect(page).to have_content('microblog')
-    end
+    before { visit root_path }
+    it { should have_content('microblog') }
   end
 
   describe "Help pages" do
-    it "shold have the content 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_title('Microblog | Help')
-    end
+    before { visit help_path }
+    it{ should  have_title(full_title('Help')) }
   end
 
   describe "Abuout pages" do
-    it "should have the content 'About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_title('Microblog | About Us')
-    end
+    before { visit about_path }
+    it{ should have_title(full_title('About Us')) }
   end
 end
